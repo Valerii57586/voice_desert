@@ -2,40 +2,39 @@ from datetime import datetime
 import time 
 import random
 start_time = datetime.now()
-finish_time = datetime.now()
 g = []
 s = 0
-while True:
-    print(g)
-    trust_back = int(random.randint(1,4))
-    a = random.randint(1,10)
-    b = random.randint(1,10)
-    timing = finish_time - start_time
-    if trust_back == 1 :
-        s = a + b
-        print(a,'+',b)
-        player = input('введи их сумму ')
+m = 0
+print('отвечать неправильно и скипать нельзя')
+while len(g) != 4:
+    try:
+        trust_back = int(random.randint(1,3))
+        a = random.randint(1,10)
+        b = random.randint(1,10)
+        start_time = datetime.now()
+        if trust_back == 1 :
+            s = a + b
+            print(a,'+',b)
+            player = int(input('введи их сумму '))
+        if trust_back == 2 :
+            s = a - b
+            print(a,'-',b)
+            player = int(input('введи их разность '))
+        if trust_back == 3 :
+            s = a * b
+            print(a,'*',b)
+            player = int(input('введи их произведение '))
+        finish_time = datetime.now()
+        print(f'ты решил за {finish_time - start_time}')
+        if s != player:
+                print('но не верно')
+                m += 1
         if s == player:
-            g.append(finish_time - start_time)
-    if trust_back == 2 :
-        s = a - b
-        print(a,'-',b)
-        player = input('введи их разность ')
-        if s == player:
-            g.append(finish_time - start_time)
-    if trust_back == 3 :
-        s = a * b
-        print(a,'*',b)
-        player = input('введи их произведение ')
-        if s == player:
-            g.append(finish_time - start_time)
-    if trust_back == 4 :
-        s = a / b
-        print(a,'/',b)
-        player = input('введи их частное ')
-        if s == player:
-            g.append(finish_time - start_time)
-    if len(g) == 4:
-        break
+            timing = finish_time - start_time
+            g.append(timing.seconds)
+        if len(g) == 4:
+            print(f'в среднем твой результат это {sum(g) / len(g) + m}')
+    except:
+        print('вы ввели не то,что я ждал')
 
 
