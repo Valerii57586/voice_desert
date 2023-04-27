@@ -18,6 +18,6 @@ def search_number():
             break
 if __name__ == '__main__' :
     search_number()
-
+//Валера олух
 
 
