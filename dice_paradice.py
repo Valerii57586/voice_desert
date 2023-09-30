@@ -1,34 +1,28 @@
+import time
 import random
+
 def dice():
-
-
-
-    number_which_need_to_hide = random.randint(1,100)
-    player1 = int(input('игрок номер 1 введите число от 1 дт 100 '))
-    player2 = int(input('игрок номер 2 введите число от 1 дт 100 '))
-    something = [number_which_need_to_hide,player1,player2]
-    something.sort()
-    winner = something[1]
-    s = winner
-    if player1 == winner :
-        print(' игрок под номером 1 оказался ближе ')
-    if player2 == winner :
-        print('игрок под номером 2 оказался ближе ')
-    if number_which_need_to_hide == winner :
-        a = player1 - winner
-        b = player2 - s
-        if abs(a) > abs(b) :
-            print('игрок под номером 2 оказался ближе')
-        if abs(a) < abs(b) :
-            print('игрок под номером 1 оказался ближе')
-        if abs(a) == abs(b) :
-            print('это ничья вы попали в очень редкий случай')
-    print(f'таблица{something}')
-
+    i = 0
+    correct_number = random.randint(1,10)
+    player1 = int(input('Игрок 1 введите число от 1 до 10: '))
+    player2 = int(input('Игрок 2 введите число от 1 до 10: '))
+    if player1 == player2:
+        print('====НИЧЬЯ====')
+    if player1 == correct_number:
+        print('====ИГРОК1_ВЫЙГРАЛ====')
+    if player2 == correct_number:
+        print('====ИГРОК2_ВЫЙГРАЛ====')
+    print('===ЧИСЛО_КОТОРОЕ_ВЫПАЛО===')
+    while True:
+        i = random.randint(1,10)
+        print(f'==={i}===')
+        time.sleep(1)
+        if i == correct_number:
+            break
+        print ("\033[A                             \033[A")
 
 
 if __name__ == '__main__' :
     dice()
-
 
 
